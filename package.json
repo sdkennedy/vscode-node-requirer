@@ -1,0 +1,63 @@
+{
+  "name": "vscode-node-requirer",
+  "displayName": "Node Requirer",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "Scott Kennedy",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.openCompletion",
+    "onLanguage:javascript"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.openCompletion",
+        "title": "Import Node Module"
+      }
+    ],
+    "keybindings": [{
+        "command": "extension.openCompletion",
+        "key": "ctrl+shift+i",
+        "mac": "ctrl+shift+i",
+        "when": "editorTextFocus"
+    }],
+    "languages": [
+      {
+        "id": "javascript",
+        "aliases": [
+          "JavaScript",
+          "javascript",
+          "js"
+        ],
+        "extensions": [
+          ".js",
+          ".es6"
+        ],
+        "firstLine": "^#!.*\\bnode",
+        "mimetypes": [
+          "text/javascript"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "node ./node_modules/.bin/babel src --out-dir out/src --source-maps -w",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "case": "^1.4.1",
+    "mz": "^2.4.0"
+  }
+}
